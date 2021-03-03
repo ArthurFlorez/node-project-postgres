@@ -2,9 +2,15 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const router = require('./network/routes')
 const config = require('./config')
-const db = require('./db')
+const db = require('./db.config')
 
-db( config.dbUrl )
+// force: true --> Elima la tabla si ya existe en la base de datos
+db.sequelize.sync({force: false}).then(() => {
+    console.log('Realiza un Drop a la table y se reconecta con { force: true }');
+  });
+
+// db( config.dbUrl )
+
 
 var app = express()
 app.use( bodyParser.json() )
