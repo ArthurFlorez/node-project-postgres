@@ -9,9 +9,6 @@ db.sequelize.sync({force: false}).then(() => {
     console.log('Realiza un Drop a la table y se reconecta con { force: true }');
   });
 
-// db( config.dbUrl )
-
-
 var app = express()
 app.use( bodyParser.json() )
 app.use( bodyParser.urlencoded({extended:false}) )
